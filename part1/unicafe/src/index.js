@@ -16,7 +16,7 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
   
-  const all = good;
+  const all = good+neutral+bad;
   console.log(all);
   return (
     
