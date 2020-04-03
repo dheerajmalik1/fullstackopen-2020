@@ -3,6 +3,17 @@ import ReactDOM from 'react-dom'
 
 // a proper place to define a component
 const Statistics = (props) => {
+
+  if(props.all==0){
+    return(
+      <div>
+        <h1>
+          No feed back given
+       </h1> 
+      </div>
+    )
+  }
+else{
   return(
     <div>
       <h1>{props.heading}</h1>
@@ -14,6 +25,8 @@ const Statistics = (props) => {
       <p>positive {props.positive}</p>  
     </div>
   )
+}
+  
 }
 
 
@@ -40,8 +53,6 @@ const App = () => {
       <button onClick={() => setBad(bad + 1)}>bad</button>
       {/* <Button /> */}
       <Statistics {...props}/>
-      
-     
     </div>
   )
 }
