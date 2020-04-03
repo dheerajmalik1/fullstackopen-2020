@@ -1,35 +1,45 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-// a proper place to define a component
-const Statistics = (props) => {
-
-  if(props.all==0){
-    return(
-      <div>
-        <h1>
-          No feed back given
-       </h1> 
-      </div>
-    )
-  }
-else{
+const Statistic = ({text, value})=>{
   return(
     <div>
-      <h1>{props.heading}</h1>
-      <p>good {props.good}</p>
-      <p>neutral {props.neutral}</p>
-      <p>bad {props.bad}</p>
-      <p>all {props.all}</p>  
-      <p>average {props.avg}</p>  
-      <p>positive {props.positive}</p>  
+      <p>{text} {value}</p>
     </div>
   )
 }
-  
+
+const Statistics = (props) => {
+  if(props.all==0){
+    return(
+      <div>
+        <h1>No feedback given</h1>
+      </div>
+    )
+  }
+    
+      return(
+        <div>
+          <h1>Statistics</h1>
+          <Statistic value ={props.good} text="good" />
+          <Statistic value ={props.bad} text="bad" />
+          <Statistic value ={props.neutral} text="neutral" />
+          <Statistic value ={props.all} text="all" />
+          <Statistic value ={props.avg} text="avg" />
+          <Statistic value ={props.positive} text="positive" />
+        </div>
+      )
+    
+    }
+
+const Button = (props) =>{
+  console.log(props);  
+  return(
+      <div>
+        <button onClick={props.onClick}>{props.text}</button>
+      </div>
+    )
 }
-
-
 
 
 const App = () => {
@@ -37,22 +47,32 @@ const App = () => {
   const [good,  setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
-  
+  const incrementGood=()=>{
+    setGood(good + 1)
+  }
+  const incrementNeutral=()=>{
+    setNeutral(neutral + 1)
+  }
+  const incrementBad=()=>{
+    setBad(bad + 1)
+  }
   const all = good+neutral+bad;
   const avg =((good*1)+(neutral*0)+ (bad*-1))/all;
   const positive =good/all;
   const props={
-    heading:"statistics", good, neutral, bad, all, avg, positive
+     good, neutral, bad, all, avg, positive
   }
   return (
     
     <div>
       <h1>give feedback</h1>
-      <button onClick={() => setGood(good + 1)}>good</button>
+      {/* <button onClick={() => setGood(good + 1)}>good</button>
       <button onClick={() => setNeutral(neutral + 1)}>neutral</button>
-      <button onClick={() => setBad(bad + 1)}>bad</button>
-      {/* <Button /> */}
-      <Statistics {...props}/>
+      <button onClick={() => setBad(bad + 1)}>bad</button> */}
+      <Button onClick ={incrementGood} text="good" />
+      <Button onClick ={incrementNeutral} text="neutral" />
+      <Button onClick ={incrementBad} text="bad" />
+      <Statistics {...props} />
     </div>
   )
 }
@@ -60,3 +80,4 @@ const App = () => {
 ReactDOM.render(<App />, 
   document.getElementById('root')
 )
+
