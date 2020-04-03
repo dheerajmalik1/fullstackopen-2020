@@ -4,13 +4,20 @@ import ReactDOM from 'react-dom'
 const Statistic = ({text, value})=>{
   return(
     <div>
-      <p>{text} {value}</p>
+      <table>
+      <tbody>
+       <tr>
+          <td>{text}</td> 
+          <td>{value}</td>
+         </tr>
+         </tbody> 
+       </table>
     </div>
   )
 }
 
 const Statistics = (props) => {
-  if(props.all==0){
+  if(props.all===0){
     return(
       <div>
         <h1>No feedback given</h1>
