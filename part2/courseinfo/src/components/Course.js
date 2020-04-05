@@ -8,8 +8,8 @@ const Course =(props)=>{
 return(
     <div>
         <Header heading={props.course.name} />
-        {props.course.parts.map((c,i)=><Content part={c.exercises} content={c.name} key={i} /> )}
-        
+        {props.course.parts.map((c,i)=><Content part={c.exercises} content={c.name} key={i}/> )}
+        <p>total is {props.course.parts.reduce((a,c)=>a+ c.exercises, 0)}</p>
     </div>
     )
 }
