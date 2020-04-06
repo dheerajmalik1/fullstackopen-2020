@@ -1,10 +1,11 @@
 import React from 'react'
 
-const Content =(props)=>{
-    console.log("in content props", props)
+const Content =({pro})=>{
+    console.log("why is this not working");
+    console.log("in content props", pro)
     return(
         <p>
-            {props.content} {props.part}
+            {pro.name} {pro.exercises}
         </p>
     )
 }
