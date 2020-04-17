@@ -6,19 +6,22 @@ const App = () => {
     { name: 'Arto Hellas' }
   ]) 
   const [ newName, setNewName ] = useState('')
-  let onInputChange= (e) =>{
   
+  let onInputChange = (e) =>{
+    
+    persons.map((n)=>{
+      if((n.name) === (e.target.value)){alert(`${newName} is already added to phonebook`)}
+    })
+    
     setNewName(e.target.value);
   }
   let onInputSubmit=(e)=>{
     e.preventDefault();
     let someObj ={name:newName};
-    //persons.concat(someObj);
-    // setPersons(persons.concat(e.target.value));
-    // console.log("trying",e.target.value);
-     setPersons(persons.concat(someObj))
-    //console.log(persons)
-     setNewName("");
+    setPersons(persons.concat(someObj))
+    setNewName("");
+  
+    
   
   }
 
@@ -28,7 +31,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <form onSubmit={onInputSubmit} >
         <div>
-          name: <input value={newName} onChange={onInputChange}  />
+          name: <input onChange={onInputChange} value={newName}  />
         </div>
         <div>
           <button type="submit">add</button>
