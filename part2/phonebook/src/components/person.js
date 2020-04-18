@@ -1,10 +1,10 @@
 import React from 'react'
 
 const Person = (props) =>{
-//console.log("in these props",props)    
+// console.log("in these props",props)    
     return(
         <div>
-           <li>{props.name}</li> 
+           <li>{props.name} {props.phn}</li> 
         </div>
     )
 }
